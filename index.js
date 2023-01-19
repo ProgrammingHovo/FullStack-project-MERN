@@ -29,7 +29,9 @@ import {
 
 mongoose.set("strictQuery", true);
 mongoose
-  .connect(process.env.MONGODB_URL)
+  .connect(
+    "mongodb+srv://admin:wwwwww@cluster0.nha6vpv.mongodb.net/?retryWrites=true&w=majority"
+  )
 
   .then(() => console.log("DB ok"))
   .catch((err) => console.log("DB error", err));
