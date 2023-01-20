@@ -100,14 +100,11 @@ export const userGetMe = async (req, res) => {
     }
 
     const { passwordHash, ...userData } = user._doc;
+    res.setHeader("Content-Type", "text/html");
 
     res.json({
       success: true,
       ...userData,
     });
-  } catch (error) {
-    res.status(404).json({
-      message: "Failed to find your data",
-    });
-  }
+  } catch (error) {}
 };
