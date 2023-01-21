@@ -29,9 +29,7 @@ import {
 
 mongoose.set("strictQuery", true);
 mongoose
-  .connect(
-    "mongodb+srv://admin:wwwwww@cluster0.nha6vpv.mongodb.net/?retryWrites=true&w=majority"
-  )
+  .connect(process.env.URI)
 
   .then(() => console.log("DB ok"))
   .catch((err) => console.log("DB error", err));
@@ -89,7 +87,9 @@ app.patch(
   postsUpdateOne
 );
 
-app.listen(4444, (err) => {
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, (err) => {
   if (err) {
     return console.log(err);
   }
