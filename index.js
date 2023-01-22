@@ -30,7 +30,6 @@ import {
 mongoose.set("strictQuery", true);
 mongoose
   .connect(process.env.URI)
-
   .then(() => console.log("DB ok"))
   .catch((err) => console.log("DB error", err));
 const app = express();
@@ -65,6 +64,10 @@ app.post("/upload", checkAuth, upload.single("image"), (req, res) => {
   res.json({
     url: `/uploads/${req.file.originalname}`,
   });
+});
+
+app.get("/", (req, res) => {
+  res.send("OK");
 });
 
 app.get("/posts", postsGetAll);
